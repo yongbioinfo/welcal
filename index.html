@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>복리 계산기</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -46,6 +47,15 @@
             margin-top: 20px;
             font-size: 18px;
         }
+        .daily-tip {
+            margin-top: 40px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .chart-container {
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
@@ -57,16 +67,15 @@
 <button onclick="calculate()">계산</button>
 <p>결과: <span id="result"></span></p>
 
-<script>
-function calculate() {
-    let principal = parseFloat(document.getElementById("principal").value);
-    let rate = parseFloat(document.getElementById("rate").value) / 100;
-    let years = parseFloat(document.getElementById("years").value);
-    
-    let amount = principal * Math.pow((1 + rate), years);
-    
-    document.getElementById("result").innerText = amount.toFixed(2);
-}
-</script>
+<div class="daily-tip">
+    <h2>데일리 팁</h2>
+    <p id="tip">로딩 중...</p>
+</div>
+
+<div class="chart-container">
+    <div id="visualization"></div>
+</div>
+
+<script src="calculator.js"></script> <!-- 별도의 JS 파일을 불러옴 -->
 </body>
 </html>
